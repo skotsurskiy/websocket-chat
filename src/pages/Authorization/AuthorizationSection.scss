@@ -1,0 +1,100 @@
+.authorization {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 500;
+    background-color: #182533;
+    width: 25vw;
+    border-radius: 1rem;
+    padding: 2rem 2rem;
+    min-width: 500px;
+    min-height: 400px;
+
+    &.login {
+        height: 30vh;
+        min-height: 300px;
+    }
+
+    &.register {
+        height: 50vh;
+    }
+}
+
+.authContent {
+    padding: 0 4rem;
+    flex-direction: column;
+}
+
+.input {
+    width: 100%;
+    margin-top: 1rem;
+    border: none;
+    border-bottom: 1px solid #555;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 500;
+    outline: none;
+    transition: 0.3s;
+
+    &.findFriends {
+        width: 80%;
+    }
+}
+
+.input:hover {
+    border-bottom: 1px solid #afafaf;
+    transform: scale(1.05)
+}
+
+.authButtons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.redirectAuthButton {
+    font-size: 1rem;
+    margin-top: 1rem;
+    color: #868686;
+}
+
+.authButton:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.errorMessage {
+    display: flex;
+    font-size: 1rem;
+}
+
+@media (max-width: 880px) {
+    .authorization {
+        width: 70vw;
+        padding: 1.5rem;
+        min-width: 400px;
+
+        &.login {
+            height: auto;
+        }
+
+        &.register {
+            height: 60vh;
+        }
+    }
+
+    .authContent {
+        padding: 0 1rem;
+    }
+
+    .authInput {
+        font-size: 1.1rem;
+    }
+
+    .authButtons {
+        gap: 0.5rem;
+    }
+}

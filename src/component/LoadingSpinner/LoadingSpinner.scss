@@ -1,0 +1,20 @@
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* або 100vh, якщо хочеш на весь екран */
+}
+
+.spinner {
+  border: 6px solid #f3f3f3; /* світлий колір фону */
+  border-top: 6px solid #3498db; /* колір активного сегменту */
+  border-radius: 50%; /* кругла форма */
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite; /* обертання */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

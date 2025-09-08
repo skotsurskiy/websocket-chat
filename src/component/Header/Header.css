@@ -1,0 +1,33 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    font-size: 2rem;
+    padding: 0 4rem;
+    background-color: #1d2c3e;
+    border-radius: 1rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.RightSideHeader {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2rem;
+}
+
+.link-reset {
+    display: inline-block; /* або block, якщо потрібно */
+    text-decoration: none; /* прибирає підкреслення */
+    color: inherit;        /* наслідує колір від батька */
+    line-height: 0;        /* прибирає додатковий відступ */
+}
+
+@MEDIA (max-width: 990px) {
+    header {
+        font-size: 1.5rem;
+        padding: 0 1rem;
+    }
+}

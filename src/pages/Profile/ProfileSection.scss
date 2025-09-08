@@ -1,0 +1,28 @@
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  width: 20vw;
+  background-color: #182533;
+  border-radius: 1rem;
+  margin: 0;
+  gap: 1rem;
+}
+
+.profileUsername {
+  margin-top: 1rem;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 500;
+  outline: none;
+  transition: 0.3s;
+  text-align: center;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

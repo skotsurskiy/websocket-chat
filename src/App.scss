@@ -1,0 +1,73 @@
+@use './util/variables.scss' as vars;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@100..400&family=Quicksand:wght@300..700&display=swap');
+
+#root {
+  font-family: "Quicksand", sans-serif;
+}
+
+.chatWindow {
+  display: flex;
+  flex-direction: column;
+  height: vars.$section-height;
+  width: 50vw;
+  background-color: #182533;
+  border-radius: 1rem;
+  margin: 0;
+}
+
+.avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  margin-right: 3rem;
+  &.header {
+    margin: 0;
+  }
+  &.profile {
+    margin: 0;
+    width: 7rem;
+    height: 7rem;
+    transition: 0.3s;
+  }
+
+  &.profile:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
+
+button {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  cursor: pointer;
+  transition: 0.3s;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+button:hover:not(:disabled) {
+  color: #afafaf;
+}
+button:focus,
+button:focus-visible {
+}
+
+@media (max-width: 768px) {
+  .chatWindow {
+    width: 80vw;
+  }
+}
+
+@media (max-height: 800px) {
+  header {
+    font-size: 1.5rem;
+  }
+  .chatWindow {
+    height: vars.$section-adaptive-height;
+  }
+}

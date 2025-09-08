@@ -1,0 +1,21 @@
+.chats {
+    flex: 1;
+    flex-direction: column;
+    padding: 1rem 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #555 transparent;
+}
+
+.chats::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chats::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 3px;
+}
+
+.chats::-webkit-scrollbar-track {
+    background: transparent;
+}
