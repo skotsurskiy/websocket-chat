@@ -1,8 +1,7 @@
 import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {loginUser} from "../../slices/authSlice.jsx";
-import {Link, useNavigate} from "react-router-dom";
-import {setToken} from "../../slices/tokenSlice.jsx";
+import {loginUser} from "../../http/slices/authSlice.jsx";
+import {useNavigate} from "react-router-dom";
 
 export default function LoginSection() {
   const dispatch = useDispatch();
@@ -16,7 +15,6 @@ export default function LoginSection() {
       .unwrap()
       .then((responseData) => {
         console.log('Login successful:', responseData);
-        dispatch(setToken(responseData.token));
         navigate("/");
       })
       .catch((err) => {

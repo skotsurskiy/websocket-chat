@@ -19,3 +19,9 @@
 .chats::-webkit-scrollbar-track {
     background: transparent;
 }
+
+@media (max-height: 800px) {
+    .chats {
+        height: 40vh;
+    }
+}

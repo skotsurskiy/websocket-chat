@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {registerUser} from "../../slices/authSlice.jsx";
+import {registerUser} from "../../http/slices/authSlice.jsx";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 

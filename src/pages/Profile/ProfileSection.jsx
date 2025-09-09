@@ -3,8 +3,8 @@ import {API_URL} from "../../util/variables.js";
 import {useNavigate} from "react-router-dom";
 import './ProfileSection.scss'
 import {useEffect, useRef, useState} from "react";
-import {getProfile} from "../../slices/profileSlice.jsx";
-import {updateProfile} from "../../slices/updateSlice.jsx";
+import {getProfile} from "../../http/slices/profileSlice.jsx";
+import {updateProfile} from "../../http/slices/profileSlice.jsx";
 
 export default function ProfileSection() {
   const dispatch = useDispatch();

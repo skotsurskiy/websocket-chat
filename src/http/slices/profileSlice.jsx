@@ -1,7 +1,25 @@
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import {API_URL} from "../util/variables.js";
-import axiosApi from "../http/index.js";
-import {setToken} from "./tokenSlice.jsx";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import axiosApi from "../index.js";
+import {API_URL} from "../../util/variables.js";
+import {setToken} from "./authSlice.jsx";
+import Cookies from "js-cookie";
+
+export const getProfile = createAsyncThunk(
+  'users/getProfile',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosApi('/users/profile', {
+        headers: {
+          'Authorization': `Bearer ${Cookies.get('token')}`
+        }
+      });
+      console.log(response.data);
+      return response.data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response?.data || 'Loading failed');
+    }
+  }
+)
 
 export const updateProfile = createAsyncThunk(
   "profile/updateProfile",
@@ -33,17 +51,19 @@ export const updateProfile = createAsyncThunk(
 const profileSlice = createSlice({
   name: "profile",
   initialState: {
-    username: "",
-    avatarUrl: "",
-    status: "idle",
-    error: null,
+    username: '',
+    avatarUrl: null,
+    error: null
   },
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(updateProfile.pending, (state) => {
-        state.status = "loading";
-        state.error = null;
+      .addCase(getProfile.fulfilled, (state, action) => {
+        state.username = action.payload.username;
+        state.avatarUrl = action.payload.avatarUrl;
+      })
+      .addCase(getProfile.rejected, (state, action) => {
+        state.error = action.payload;
       })
       .addCase(updateProfile.fulfilled, (state, action) => {
         state.status = "succeeded";
@@ -54,7 +74,7 @@ const profileSlice = createSlice({
         state.status = "failed";
         state.error = action.payload
       });
-  },
+  }
 });
 
 export default profileSlice.reducer;

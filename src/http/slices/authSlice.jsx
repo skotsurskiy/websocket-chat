@@ -1,6 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios';
-import {API_URL} from "../util/variables.js";
+import {API_URL} from "../../util/variables.js";
+import Cookies from 'js-cookie';
 
 export const registerUser = createAsyncThunk(
   'auth/registerUser',
@@ -26,7 +27,10 @@ export const loginUser = createAsyncThunk(
     try {
       const payload = {username, password};
       console.log('Sending payload:', payload);
-      const response = await axios.post(`${API_URL}/auth/login`, {username, password});
+      const response = await axios.post(`${API_URL}/auth/login`, {
+        username,
+        password
+      });
       return response.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.response?.data || 'Login failed');
@@ -37,14 +41,18 @@ export const loginUser = createAsyncThunk(
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: null,
+    token: Cookies.get('token') || null,
     loading: false,
     error: null,
   },
   reducers: {
     logout: state => {
-      state.user = null;
-      localStorage.removeItem('token');
+      state.token = null;
+      Cookies.remove('token');
+    },
+    setToken: (state, action) => {
+      state.token = action.payload;
+      Cookies.set('token', action.payload.token, { expires: 1, secure: false, sameSite: 'Lax' });
     }
   },
   extraReducers: builder => {
@@ -55,7 +63,8 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload;
+        state.token = action.payload.token;
+        Cookies.set('token', action.payload.token, { expires: 1, secure: false, sameSite: 'Lax' });
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;
@@ -67,10 +76,8 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload;
-        if (action.payload?.token) {
-          localStorage.setItem('token', action.payload.token);
-        }
+        state.token = action.payload.token;
+        Cookies.set('token', action.payload.token, { expires: 1, secure: false, sameSite: 'Lax' });
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
@@ -78,5 +85,5 @@ const authSlice = createSlice({
       });
   },
 });
-export const {logout} = authSlice.actions;
+export const {logout, setToken} = authSlice.actions;
 export default authSlice.reducer;

@@ -75,7 +75,8 @@
     .authorization {
         width: 70vw;
         padding: 1.5rem;
-        min-width: 400px;
+        min-width: 200px;
+        min-height: 100vh;
 
         &.login {
             height: auto;
