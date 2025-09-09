@@ -1,0 +1,35 @@
+.messageSection {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  padding: 0.5rem 0;
+
+  p {
+    margin: 0;
+  }
+
+  &.sender {
+    flex-direction: row-reverse;
+
+    .avatarWrapper {
+      margin-right: 0;
+      margin-left: 1rem;
+    }
+  }
+
+  .avatarWrapper {
+    width: 2.5rem;
+    margin-right: 1rem;
+    margin-bottom: 0.2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .messageContent {
+    background-color: #15202c;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    max-width: 40%;
+    word-wrap: break-word;
+  }
+}

@@ -6,6 +6,15 @@
     cursor: pointer
 }
 
+.lastMessage {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-info {
+    width: 60%;
+}
+
 .chat:hover {
     background-color: #121b25;
 }

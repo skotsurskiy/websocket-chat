@@ -1,0 +1,112 @@
+@use '../../util/variables.scss' as vars;
+
+.chatContentSection {
+  display: flex;
+  flex-direction: column;
+  height: vars.$section-height;
+  width: 50vw;
+  background-color: #182533;
+  border-radius: 1rem;
+  margin: 0;
+  min-width: 400px;
+  min-height: 600px;
+}
+
+.chatContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.chatMessages {
+  flex: 1;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #555 transparent;
+  padding: 0 4rem;
+}
+
+.sendMessageBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 4rem;
+  border-top: 3px solid #15202c;
+  overflow: hidden;
+}
+
+.sendMessageInput {
+  width: 100%;
+  min-height: 2rem;
+  max-height: 6rem;
+  font-size: 1.5rem;
+  resize: none;
+  outline: none;
+  background-color: #15202c;
+  border: none;
+  border-radius: 1rem;
+  transition: 0.3s;
+  padding: 0.5rem 1rem;
+}
+
+.sendMessageInput::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sendMessageInput::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 3px;
+}
+
+.sendMessageInput::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.backButton {
+  display: flex;
+  flex-direction: column;
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+  margin: 0;
+  transition: 0.3s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.sendButton {
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+  margin: 0;
+  padding: 0.5rem;
+  transition: 0.3s;
+  &:hover {
+    background-color: #15202c;
+    border-radius: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .chatMessages {
+    padding: 0 2rem;
+  }
+
+  .sendMessageBlock {
+    padding: 1rem 2rem;
+  }
+
+  .sendButton {
+    &:hover {
+      background-color: initial;
+    }
+    &:active {
+      background-color: #15202c;
+      border-radius: 1rem;
+    }
+  }
+}
